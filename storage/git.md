@@ -2,8 +2,10 @@
 title: Git
 description: Storage Module
 published: true
-date: 2019-09-15T02:45:12.062Z
-tags: 
+date: 2021-03-21T00:41:57.739Z
+tags: module, storage
+editor: markdown
+dateCreated: 2019-02-17T22:58:31.273Z
 ---
 
 Git is a version control system for tracking changes in computer files and coordinating work on those files among multiple people.
@@ -43,7 +45,7 @@ For convenience, instructions for the most popular Git providers are listed belo
 3. When prompted to save the generated file, enter a path which can be accessed by Wiki.js *(e.g. `/etc/wiki/github.pem`)* and press **Enter**.
 4. Leave the passphrase empty and press **Enter** twice. Password-protected keys will NOT work.
 
-> On Windows, you can use [Git Bash](https://git-scm.com/download/win) or Windows Subsystem for Linux (WSL) distrutions like [Ubuntu for Windows](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6) to run the commands above. You can also generate keys manually using the [puttygen](https://www.ssh.com/ssh/putty/download) utility.
+> On Windows, you can use [Git Bash](https://git-scm.com/download/win) or Windows Subsystem for Linux (WSL) distributions like [Ubuntu for Windows](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6) to run the commands above. You can also generate keys manually using the [puttygen](https://www.ssh.com/ssh/putty/download) utility.
 {.is-info}
 
 ### Add the key to GitHub
@@ -64,7 +66,7 @@ For convenience, instructions for the most popular Git providers are listed belo
 4. Enter the following settings:
    - Authentication Type: `ssh`
    - Repository URI: *On your GitHub repository page, in the **Code** tab, click on the **Clone or download** green button and copy the URI shown below **Clone with SSH**.*
-   - Branch: `master`
+   - Branch: `main`
    - SSH Private Key Path: *The path to your private key generated earlier.*
    - Username: *Empty*
    - Password: *Empty*
@@ -85,12 +87,12 @@ For convenience, instructions for the most popular Git providers are listed belo
 
 ## Import Content
 
-When enabling the Git storage module the first time with a remote repository that already have content, you might need to initiate a manual import. By default, only changes between the latest local commit and the latest remote commit will be imported.
+When enabling the Git storage module for the first time with a remote repository that already has content, you might need to initiate a manual import. By default, only changes between the latest local commit and the latest remote commit will be imported.
 
 > **Heads up!** Make sure the Git module is already configured and working before proceeding any further!
 {.is-warning}
 
-To force all content currently present in the local repository to be imported, load the **Git** module settings tab in the Administration Area (under **Storage**), scroll to the very bottom of the page and click **Run** button on the **Import Everything** action card.
+To force an import of all content currently present in the local repository, load the **Git** module settings tab in the Administration Area (under **Storage**), scroll to the very bottom of the page and click **Run** button on the **Import Everything** action card.
 
 ## Missing Content in Remote Repository
 

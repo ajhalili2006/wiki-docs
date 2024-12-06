@@ -2,7 +2,7 @@
 title: Authentication
 description: List of supported Authentication Modules
 published: true
-date: 2020-09-10T18:51:33.063Z
+date: 2023-01-15T02:28:15.032Z
 tags: auth
 editor: markdown
 dateCreated: 2019-04-29T00:57:43.566Z
@@ -27,6 +27,7 @@ Most strategies require some configuration. Check out the links below for module
 - Firebase
 - [GitHub](/auth/github)
 - [Google](/auth/google)
+- [Keycloak OpenID Connect](/auth/keycloak)
 - [LDAP / Active Directory](/auth/ldap)
 - [Local](/auth/local)
 - Microsoft
@@ -53,8 +54,6 @@ Finally, select the group new users will be assigned to the first time they log 
 
 Click **Apply** to save the configuration.
 
-![](https://a.icons8.com/dhhZkYZk/0ICOP9/svg.svg){.align-abstopright}
-
 # Two-Factor Authentication
 
 > This feature is available from version **2.5 and up**.
@@ -62,7 +61,7 @@ Click **Apply** to save the configuration.
 
 Two-Factor Authentication (2FA) adds an extra layer of protection to user accounts. It combines something you know *(your password)* with something you have / are *(mobile phone, fingerprint, security key, etc.)*.
 
-Even if a malicious user obtain your password, he will be unable to login because he doesn't have the second authentication factor.
+Even if a malicious user obtain your password, they will be unable to login because they don't have the second authentication factor.
 
 ## Getting Started
 

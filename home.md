@@ -2,9 +2,10 @@
 title: Wiki.js
 description: Official Documentation for 2.x
 published: true
-date: 2020-06-14T21:57:30.079Z
+date: 2024-05-12T21:23:36.259Z
 tags: 
 editor: markdown
+dateCreated: 2019-02-15T04:20:30.188Z
 ---
 
 > This documentation site is running on Wiki.js!
@@ -40,7 +41,6 @@ Modules greatly expand the capabilities of your wiki.
 - [:lock: Authentication *Configure how users can login and register to your wiki.*](/auth)
 - [:speech_balloon: Comments *Add discussion capabilities to your wiki.*](/comments)
 - [:pencil: Editors *Manage the various editors used to create content.*](/editors)
-- [:clipboard: Logging *Forward logs to external logging services.*](/logging)
 - [:hourglass: Rendering *Configure how content is parsed and rendered into its readable form.*](/rendering)
 - [:mag: Search Engines *Manage the search capabilities of your wiki.*](/search)
 - [:floppy_disk: Storage *Backup or sync the content of your wiki with external storage services.*](/storage)
@@ -53,7 +53,6 @@ Wiki.js is fully extensible for maximum customization.
 - [:book: Getting Started *How to setup a dev environment for Wiki.js.*](/dev)
 - [:closed_book: Modules *Learn how to create a module.*](/dev/modules)
 - [:art: Themes *Learn how to create your own theme.*](/dev/themes)
-- [:dash: Publishing *Make your module / theme available to others!*](/dev/themes/publish)
 {.links-list}
 
 # Localization
@@ -61,9 +60,10 @@ Wiki.js is fully extensible for maximum customization.
 {.links-list}
 
 # Contribute
-- [:fire: Report a Bug *Help us squash those pesky bugs.*](https://github.com/Requarks/wiki/issues)
+- [:question: Ask a Question *We're here to help.*](https://github.com/Requarks/wiki/discussions)
+- [:fire: Report a Bug *Help us squash those pesky bugs.*](https://github.com/Requarks/wiki/discussions)
 - [:bulb: Suggest a New Feature *We need your ideas!*](https://requests.requarks.io/wiki)
-- [:moneybag: Donate *Make a small donation or become a sponsor of this wonderful project!*](https://opencollective.com/wikijs)
+- [:moneybag: Donate *Make a small donation or become a sponsor of this wonderful project!*](https://js.wiki/donate)
 {.links-list}
 
 ![Wiki.js](https://static.requarks.io/logo/wikijs-butterfly.svg){.align-abstopright}

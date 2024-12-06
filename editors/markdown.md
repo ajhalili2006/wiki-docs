@@ -2,8 +2,10 @@
 title: Markdown
 description: Editor
 published: true
-date: 2020-05-14T15:03:27.792Z
+date: 2024-10-06T23:51:50.138Z
 tags: editors
+editor: markdown
+dateCreated: 2019-05-22T02:59:46.078Z
 ---
 
 # Overview
@@ -247,7 +249,11 @@ Consectetur adipiscing elit
 
 #### Usage
 
-Using the syntax `![Image Caption](Image Source)`.
+Using the syntax `![Image alt text](Image source "Image title")`.
+
+Image alt text - text that is displayed when the image could not be loaded
+Image source - file path of image
+Image title - is displayed when the user hovers over the picture
 
 #### Shortcuts
 - Using the **Assets** tool in the left toolbar.
@@ -255,7 +261,7 @@ Using the syntax `![Image Caption](Image Source)`.
 #### Examples
 
 ```markdown
-![Lorem ipsum](https://dolor.example.com/sit/amet.jpg)
+![Lorem ipsum](https://dolor.example.com/sit/amet.jpg "Lorem ipsum")
 
 Consectetur ![adipiscing](/link/to/image.jpg) elit
 ```
@@ -399,7 +405,7 @@ sequenceDiagram
 Using an **number**, followed by a **dot** symbol, followed by a space, before each line of text.
 
 #### Shortcuts
-- By selecting text, then clicking the ![Blockquote](/assets/ui/ui-markdown-ol.png =x30){.radius-4} button in the toolbar.
+- By selecting text, then clicking the ![Ordered List](/assets/ui/ui-markdown-ol.png =x30){.radius-4} button in the toolbar.
 
 #### Examples
 
@@ -495,6 +501,59 @@ Lorem ^ipsum^ dolor
 
 Lorem ^ipsum^ dolor
 
+## Table
+
+### Tab {.tabset}
+
+#### Usage
+
+Using the syntax:
+
+```md
+| Header A1 | Header B1 | Header C1 |
+|-----------|-----------|-----------|
+| Cell A2   | Cell B2   | Cell C2   |
+| Cell A3   | Cell B3   | Cell C3   |
+...
+```
+
+#### Examples
+
+```md
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Foo      | Bar      | Xyz      |
+| Abc      | Def      | 123      |
+```
+
+will result in:
+
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Foo      | Bar      | Xyz      |
+| Abc      | Def      | 123      |
+
+#### Stylings
+
+By adding the class `dense` on a separate line, after the table, you can make the table use a smaller font and smaller padding. For example:
+
+```md
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Foo      | Bar      | Xyz      |
+| Abc      | Def      | 123      |
+{.dense}
+```
+
+will result in:
+
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Foo      | Bar      | Xyz      |
+| Abc      | Def      | 123      |
+{.dense}
+
+
 ## Task Lists
 
 ### Tab {.tabset}
@@ -524,7 +583,7 @@ Using the syntax `- [ ]` or a `- [x]`.
 Using an **asterisk** or a **dash** symbol, followed by a space, before each line of text.
 
 #### Shortcuts
-- By selecting text, then clicking the ![Blockquote](/assets/ui/ui-markdown-ul.png =x30){.radius-4} button in the toolbar.
+- By selecting text, then clicking the ![Unordered List](/assets/ui/ui-markdown-ul.png =x30){.radius-4} button in the toolbar.
 
 #### Examples
 
@@ -574,3 +633,26 @@ and:
 
 > Note that these stylings are specific to Wiki.js and will fallback to standard list styling in other applications.
 {.is-warning}
+
+# Decorate Syntax
+
+In some cases, using the `{.class-name}` syntax doesn't apply the styling class to the correct element because of ambiguous content. For example:
+
+```
+> Lorem ipsum
+> - Line 1
+> - Line 2
+{.is-info}
+```
+Because the parser doesn't know whether the `.is-info` class should be applied to the list or the blockquote, it ends up being applied to the wrong element (the deepest element preceding it).
+
+You can specify the correct target by using the decorate syntax `<!-- {tag-name:.class-name} -->` instead. For example:
+
+```
+> Lorem ipsum
+> - Line 1
+> - Line 2
+<!-- {blockquote:.is-info} -->
+```
+
+The `.is-info` class will now correctly be applied to the blockquote element.

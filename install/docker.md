@@ -2,9 +2,10 @@
 title: Docker
 description: Getting started with the Docker image
 published: true
-date: 2020-06-05T21:16:19.234Z
+date: 2024-09-18T01:09:44.271Z
 tags: setup, docker
 editor: markdown
+dateCreated: 2019-02-15T04:23:08.720Z
 ---
 
 > Before proceeding, make sure you meet the [system requirements](/install/requirements).
@@ -12,12 +13,15 @@ editor: markdown
 
 # Using the Docker image
 
-Wiki.js is published as a Docker image on Docker Hub as `requarks/wiki`
+Wiki.js is published as a Docker image on GitHub Packages as `ghcr.io/requarks/wiki` and on Docker Hub as `requarks/wiki`.
 
-> It's highly recommended that you don't use the `latest` tag but instead the major version you need, e.g. `requarks/wiki:2`
+> It's highly recommended that you don't use the `latest` tag but instead the major version you need, e.g. `ghcr.io/requarks/wiki:2`
 >
-> It's also possible to point to a specific minor version (e.g. `requarks/wiki:2.4`), although you will not automatically get the latest features when pulling the latest image.
+> It's also possible to point to a specific minor version (e.g. `ghcr.io/requarks/wiki:2.5`), although you will not automatically get the latest features when pulling the latest image.
 {.is-info}
+
+- View on [GitHub Packages](https://github.com/Requarks/wiki/pkgs/container/wiki)
+- View on [Docker Hub](https://hub.docker.com/r/requarks/wiki)
 
 ## Environment Variables
 You must set the following environment variables. They are all **required** unless specified otherwise.
@@ -90,12 +94,12 @@ When running Wiki.js with multiple replicas (e.g. Kubernetes cluster / Docker Sw
 
 Here's an example of a command to run Wiki.js connecting to a PostgreSQL database:
 ```bash
-docker run -d -p 8080:3000 --name wiki --restart unless-stopped -e "DB_TYPE=postgres" -e "DB_HOST=db" -e "DB_PORT=5432" -e "DB_USER=wikijs" -e "DB_PASS=wikijsrocks" -e "DB_NAME=wiki" requarks/wiki:2
+docker run -d -p 8080:3000 --name wiki --restart unless-stopped -e "DB_TYPE=postgres" -e "DB_HOST=db" -e "DB_PORT=5432" -e "DB_USER=wikijs" -e "DB_PASS=wikijsrocks" -e "DB_NAME=wiki" ghcr.io/requarks/wiki:2
 ```
 
 or to a MySQL database:
 ```bash
-docker run -d -p 8080:3000 --name wiki --restart unless-stopped -e "DB_TYPE=mysql" -e "DB_HOST=db" -e "DB_PORT=3306" -e "DB_USER=wikijs" -e "DB_PASS=wikijsrocks" -e "DB_NAME=wiki" requarks/wiki:2
+docker run -d -p 8080:3000 --name wiki --restart unless-stopped -e "DB_TYPE=mysql" -e "DB_HOST=db" -e "DB_PORT=3306" -e "DB_USER=wikijs" -e "DB_PASS=wikijsrocks" -e "DB_NAME=wiki" ghcr.io/requarks/wiki:2
 ```
 
 > Both examples assume you have a database running in another container named `db` on the same network.
@@ -104,7 +108,7 @@ docker run -d -p 8080:3000 --name wiki --restart unless-stopped -e "DB_TYPE=mysq
 
 Let's Encrypt example:
 ```bash
-docker run -d -p 80:3000 -p 443:3443 -e "LETSENCRYPT_DOMAIN=wiki.example.com" -e "LETSENCRYPT_EMAIL=admin@example.com" --name wiki --restart unless-stopped -e "DB_TYPE=postgres" -e "DB_HOST=db" -e "DB_PORT=5432" -e "DB_USER=wikijs" -e "DB_PASS=wikijsrocks" -e "DB_NAME=wiki" requarks/wiki:2
+docker run -d -p 80:3000 -p 443:3443 -e "LETSENCRYPT_DOMAIN=wiki.example.com" -e "LETSENCRYPT_EMAIL=admin@example.com" --name wiki --restart unless-stopped -e "DB_TYPE=postgres" -e "DB_HOST=db" -e "DB_PORT=5432" -e "DB_USER=wikijs" -e "DB_PASS=wikijsrocks" -e "DB_NAME=wiki" ghcr.io/requarks/wiki:2
 ```
 
 ## Alternative: Mount the config file
@@ -114,17 +118,20 @@ If using environment variables is not your cup of tea, you can also mount a conf
 Create a new file based on the [sample config file](https://github.com/Requarks/wiki/blob/master/config.sample.yml) and modify the values to match your setup. You can then mount the config file in the container:
 
 ```bash
-docker run -d -p 8080:3000 --name wiki --restart unless-stopped -v YOUR-FILE.yml:/wiki/config.yml requarks/wiki:2
+docker run -d -p 8080:3000 --name wiki --restart unless-stopped -v YOUR-FILE.yml:/wiki/config.yml ghcr.io/requarks/wiki:2
 ```
 
-It's also possible to define an alternate location for the config file to be loaded from. This is useful in scenarios where you want to mount a configuration folder instead. Define the environment variable **CONFIG_FILE** with the path to the config file.
+It's also possible to define an alternate location for the config file to be loaded from, using the CONFIG_FILE env variable. This is useful in scenarios where you want to mount a configuration folder instead.
+
+- **CONFIG_FILE** : Path to the config.yml file
+{.grid-list}
 
 ## Change User Mode
 
 By default, Wiki.js runs as user `wiki`. If you get permissions issues while mounting files (such as SQLite db or private keys), you can override the runtime user to run as `root` using the `-u` parameter, e.g.:
 
 ```bash
-docker run -d -p 8080:3000 -u="root" --name wiki --restart unless-stopped -e "DB_TYPE=postgres" -e "DB_HOST=db" -e "DB_PORT=5432" -e "DB_USER=wikijs" -e "DB_PASS=wikijsrocks" -e "DB_NAME=wiki" requarks/wiki:2
+docker run -d -p 8080:3000 -u="root" --name wiki --restart unless-stopped -e "DB_TYPE=postgres" -e "DB_HOST=db" -e "DB_PORT=5432" -e "DB_USER=wikijs" -e "DB_PASS=wikijsrocks" -e "DB_NAME=wiki" ghcr.io/requarks/wiki:2
 ```
 
 This is however not a secure way to run containers. Make sure you understand the security implications before doing so.
@@ -138,7 +145,7 @@ version: "3"
 services:
 
   db:
-    image: postgres:11-alpine
+    image: postgres:15-alpine
     environment:
       POSTGRES_DB: wiki
       POSTGRES_PASSWORD: wikijsrocks
@@ -150,7 +157,7 @@ services:
       - db-data:/var/lib/postgresql/data
 
   wiki:
-    image: requarks/wiki:2
+    image: ghcr.io/requarks/wiki:2
     depends_on:
       - db
     environment:
@@ -168,19 +175,21 @@ volumes:
   db-data:
 ```
 
+`DB_HOST` should match the service name (in this case, `db`). If `container_name` is specified for the service, its value should be used instead.
+
+The above Docker Compose file should be compatible with rootless Podman Compose by default as long as you have `aardvark-dns` installed on the host.
+
 ![](https://a.icons8.com/jihZbhdR/4WJoF7/svg.svg){.align-abstopright}
 
 # ARM images
 
-> Since version **2.4**, ARMv7 and ARM64 images are part of the same docker image tags as AMD64. Simply use the same tags as above.
+> Since version **2.4**, ARM64 images are part of the same docker image tags as AMD64. Simply use the same tags as above.
 {.is-info}
 
-This image is compatible with:
+This image is compatible with **ARM64** systems, such as the Raspberry Pi 4, 3 and later Raspberry Pi 2 (v1.2).
 
-- **ARM64**: Raspberry Pi 4, 3 and later Raspberry Pi 2 (v1.2)
-- **ARMv7**: Early Raspberry Pi 2 (v1.1)
-
-The original, first-generation Raspberry Pi is **not** supported *(ARMv6)*.
+Support for **ARMv7** (*early Raspberry Pi 2 (v1.1)*) was dropped as of v2.5.304. The last supported version for ARMv7 is v2.5.303.
+The original, first-generation Raspberry Pi is **NOT** supported *(ARMv6)*.
 
 # OpenShift
 

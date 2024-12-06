@@ -2,32 +2,24 @@
 title: Demo
 description: Test Drive Wiki.js
 published: true
-date: 2020-07-27T02:04:44.379Z
+date: 2022-02-19T00:00:43.664Z
 tags: 
 editor: markdown
+dateCreated: 2020-06-08T16:51:29.743Z
 ---
-
-Thanks to runme.io and [DigitalOcean](https://m.do.co/c/5f7445bfa4d0), anyone can quickly spin up their own demo instance of Wiki.js for a quick test drive.
 
 > **Did you know?** This documentation website is running Wiki.js!
 {.is-info}
 
-# Usage
+Because of potential abuse and spam, we don't offer a public test instance of Wiki.js. You can however launch your own Wiki.js instance using the methods below, completely free:
 
-Follow the instructions below to get started:
+# Pre-configured Wiki.js on DigitalOcean
 
-1. [Launch a New Demo Instance](https://runme.io/run?app_id=5ad463aa-078d-4471-aac9-199dc41ed896)
-2. Wait for the deployment to complete. You'll automatically be redirected to the wiki upon completion.
-3. Enter an **email address** and a **password** of your choice for the root administrator account.
-4. Leave the **Site URL** as-is, it won't be needed for this demo.
-5. Press **Install**.
-6. Wait for the installation to complete. You'll automatically be redirected to the login page upon completion.
-7. Login with the **email address** and **password** you entered previously.
+DigitalOcean offers a free 60-day 100$ credits to launch your own Wiki.js instance.
 
-> Note that demo instances are only available for **10 minutes** after the deployment is completed.
-{.is-warning}
+Follow the [installation instructions for DigitalOcean](https://docs.requarks.io/install/digitalocean) to get started.
 
-# First Steps
+## First Steps
 
 You'll first be prompted to create the home page.
 
@@ -35,14 +27,10 @@ Select your preferred editor (**Markdown** or **Visual Editor**), enter a **Titl
 
 You'll automatically be redirected to your newly created page.
 
-# Explore the Administration Area
+## Explore the Administration Area
 
 The administration area contains a vast array of customization options.
 
 Click on the <kbd><i class="mdi mdi-account-circle"></i></kbd> **Account** icon in the top-right corner of the page, then select **Administration**.
 
 Explore the various sections from the left side navigation.
-
-# Next Steps
-
-Are you ready to install Wiki.js on your own infrastructure? Read the [requirements](/install/requirements) and [installation instructions](/install).

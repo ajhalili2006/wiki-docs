@@ -2,7 +2,7 @@
 title: Transfer Wiki.js between servers
 description: How to migrate your installation to a new server
 published: true
-date: 2020-09-13T18:54:42.037Z
+date: 2023-01-29T21:57:54.346Z
 tags: 
 editor: markdown
 dateCreated: 2020-09-13T03:44:51.774Z
@@ -34,7 +34,7 @@ docker exec db pg_dump wiki -U wiki -F c > wikibackup.dump
 > In the above command, the PostgreSQL docker container is named `db` and we're using the database name `wiki` and user `wiki`. This is the default if you followed the tutorial mentionned in the Getting Started section above.
 {.is-info}
 
-This will create a new file `wikibackup.sql` in the current directory.
+This will create a new file `wikibackup.dump` in the current directory.
 
 # 3. Transfer Backup
 
@@ -46,7 +46,7 @@ We'll now transfer the backup file onto the new server. There're several methods
 rsync -P wikibackup.dump root@YOUR-NEW-SERVER-IP:~/wikibackup.dump
 ```
 
-> This assumes that you have previously configured your new server to accept SSH connections from your old server. To do so, you need to add the public key of the old server into the authorized_keys of the new server. You can learn how [in this tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2).
+> This assumes that you have previously configured your new server to accept SSH connections from your old server. To do so, you need to add the public key of the old server into the authorized_keys of the new server. You can learn how [in this tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-22-04).
 {.is-info}
 
 # 4. Restore Database

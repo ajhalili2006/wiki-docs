@@ -2,9 +2,10 @@
 title: Requirements
 description: Prerequisites to install Wiki.js
 published: true
-date: 2020-06-02T02:09:07.872Z
+date: 2024-04-25T04:29:08.073Z
 tags: setup
 editor: markdown
+dateCreated: 2019-02-15T04:21:32.940Z
 ---
 
 # Server Requirements
@@ -32,7 +33,7 @@ An alternate method of [sideloading files](/install/sideload) is also available 
 
 # Domain
 
-Wiki.js requires a dedicated sub-domain / domain *(e.g. wiki.example.com)*. You cannot map Wiki.js to a subfolder.
+Wiki.js requires a dedicated sub-domain / domain *(e.g. `wiki.example.com`)*. You cannot map Wiki.js to a subfolder.
 
 # Database
 
@@ -42,6 +43,9 @@ For best performance, features and future compatibility, it's highly recommended
 {.grid-list}
 
 > It's recommended you use the latest version of PostgreSQL when possible.
+{.is-success}
+
+> Note that in order to use the PostgreSQL search module, the `pg_trgm` extension must be available on the host. The extension is part of the `postgresql-contrib` package in most Linux distributions. The docker PostgreSQL image already includes the extension.
 {.is-info}
 
 ---
@@ -54,7 +58,7 @@ Wiki.js is also compatible with the following database systems:
 - ![](https://static.requarks.io/logo/sqlite-alt.svg =24x){.mr-2} SQLite **3.9 or later**
 {.grid-list}
 
-> **These engines *(MySQL, MariaDB, MS SQL Server and SQLite)* may not be supported in the next major version of Wiki.js**. Make sure you understand the implications of migrating your database to PostgreSQL if you plan on upgrading to 3.x+ in the coming years.
+> **These engines *(MySQL, MariaDB, MS SQL Server and SQLite)* will NOT be supported in the next major version of Wiki.js**. Make sure you understand the implications of migrating your database to PostgreSQL if you plan on upgrading to 3.x+ in the coming years. An export + import tool will be made available at / shortly after release.
 > 
 > SQLite is **not recommended** for production deployments.
 {.is-warning}
@@ -65,15 +69,16 @@ You're expected to have installed one of these database engines already *(either
 
 The [Node.js](https://nodejs.org/) runtime is required. The following versions are supported:
 
-- **10.12** or later
-- **12.0** or later
-- **14.0** or later
+- **Node.js 12**: version **12.0** or later.
+- **Node.js 14**: version **14.0** or later.
+- **Node.js 16**: version **16.0** or later.
+- **Node.js 18**: version **18.0** or later. *(since v2.5.300)*{.text-caption}
+- **Node.js 20**: version **20.0** or later. *(since v2.5.300)*{.text-caption}
+- **Node.js 22**: version **22.0** or later. *(since v2.5.302)*{.text-caption}
 {.grid-list}
 
-> Wiki.js will **NOT** run on older versions such as 8.x, 6.x or any version below **10.12**!
->
-> For `13.x`, due to a bug introduced in Node.js 13.0, versions prior to `13.3` are not compatible.
-{.is-warning}
+> Odd-numbered versions (e.g. `13.x`, `15.x`, `17.x`) are **NOT** officially supported.
+{.is-danger}
 
 ### **Using Docker?** :whale:
 
@@ -93,7 +98,7 @@ The following browsers are supported:
 - Microsoft Edge
 - Apple Safari (including iOS version)
 
-Note that only the latest stable version of these browsers are supported. All browsers updates automatically in the background.
+Note that only the latest stable version of these browsers are supported. All browsers are automatically updated in the background by default.
 
 > There's limited compatibility with **IE11**. Users will be able to read content but not perform any editing action or use interactive features.
 {.is-info}
